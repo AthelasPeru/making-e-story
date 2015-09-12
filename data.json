@@ -1,0 +1,51 @@
+{
+  "game_data":{
+    "min_time_meassurement": 1
+  },
+  "character_data":[
+      {
+        "skills":{
+          "skill_1": 0,
+          "skill_2": 23
+        },
+        "age": 1234
+      }
+    ],
+    "phases":[
+      {"phase_0":{
+        "success":{
+          
+        },
+        "failure": [
+          {
+            "failure_0": {
+              "req":{
+                "love": 5,
+                "gaming": 10
+              },
+              "message":"Esen te toco por la noche, lloraras hasta el fin de tus dias."
+            }
+          },
+          {}
+        ],
+        "actions":[
+          {"action_0":{
+            "duration":10,
+            "messages":[
+              "Visitaste HN",
+              "Viste TED Talks",
+              "Obama te convenció"
+            ],
+            "resource":{
+              "name": "resource_name",
+              "value": 2
+              }
+            }
+          }
+          
+        ]
+      }},
+      {"phase_1":{}}
+    ]
+  
+}
