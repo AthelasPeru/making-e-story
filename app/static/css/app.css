@@ -50,3 +50,7 @@ p{
 .e-story img{
 	width: 100%;
 }
+
+.selected{
+	border: 2px solid #ea3456;
+}

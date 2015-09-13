@@ -39,7 +39,11 @@
       
       <div class="large-5 medium-5 large-offset-1 medium-offset-1 columns e-story " id="e-story">
         <a class="button" href="game/{{game.id}}">
-          <img src="{{url_for('static', filename='img/image_01a.jpg')}}" alt="">
+          {% if game.general_data.image %}
+          <img src="{{url_for('static', filename='img/{}'.format(game.general_data.image))}}" alt="">
+          {% else %}
+          <img src="{{url_for('static', filename='img/default.png')}}" alt="">
+          {% endif %}
           ver historia
         </a>
         <h3>{{ game.general_data.name }}</h3>

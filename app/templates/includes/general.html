@@ -9,43 +9,43 @@
       
         <div class="row">
 		    <div class="small-3 columns">
-		      <label for="name right-label" class="right">Name</label>
+		      <label for="name" class="right">Name</label>
 		    </div>
 		    <div class="small-9 columns">
-		      <input type="text" id="name right-label" name="name" placeholder="Nombre de tu Historia">
+		      <input type="text" id="name" name="name" placeholder="Nombre de tu Historia">
 		    </div>
       
         </div>
 
     	<div class="row">
 		    <div class="small-3 columns">
-		      <label for=" description right-label" class="right">Description</label>
+		      <label for="description" class="right">Description</label>
 		    </div>
       
 		    <div class="small-9 columns">
-		      <input type="text" id="description right-label" name="description" placeholder="texto introductorio a la historia">
+		      <input type="text" id="description" name="description" placeholder="texto introductorio a la historia">
 		    </div>
       
    		</div>
 
 		<div class="row">
 		    <div class="small-3 columns">
-		      <label for=" n_scenes right-label" class="right"># of Scenes</label>
+		      <label for=" n_scenes" class="right"># of Scenes</label>
 		    </div>
 		      
 		    <div class="small-9 columns">
-		      <input type="number" id="n_scenes right-label" name="n_scenes" value="3" >
+		      <input type="number" id="n_scenes" name="n_scenes" value="3" >
 		    </div>
 		      
 		</div>
 
 		<div class="row">
 		    <div class="small-3 columns">
-		      <label for=" time_unit right-label" class="right">Minimal time unit</label>
+		      <label for=" time_unit" class="right">Minimal time unit</label>
 		    </div>
 		      
 		    <div class="small-9 columns">
-		      <input type="number" id="time_unit right-label" name="time_unit" value="1000" >
+		      <input type="number" id="time_unit" name="time_unit" value="1000" >
 		    </div>
 		      
 		</div>
@@ -66,15 +66,22 @@
 
 	<div class="small-4 columns">
 		<div class="row">
+		<h4>Select your cover</h4>
 
-		<form action="/create" method="post" enctype="multipart/form-data">
+		<div class="small-6 columns"><img src="{{url_for('static', filename='img/image_01a.jpg')}}" alt="" class="thumbnail"></div>	
+		<div class="small-6 columns"><img src="{{url_for('static', filename='img/default.png')}}" alt="" class="thumbnail"></div>
+		<hr>
+		<div class="small-6 columns"><img src="{{url_for('static', filename='img/image_02a.jpg')}}" alt="" class="thumbnail"></div>
+		<div class="small-6 columns"><img src="{{url_for('static', filename='img/image_02b.jpg')}}" alt="" class="thumbnail"></div>
+		<hr>
+		<!-- <form action="/create" method="post" enctype="multipart/form-data">
 		    <label for="upload_img">Upload image</label>
 		  </div>
 		  <div class="row">
 		    <input type="file" id="upload_img" name="upload_img">
 		  </div>
-		  <div class="button">Upload picture</div>
-		</form>
+		  
+		</form> -->
 
 		  <div class="row">
 		    <div href="#" class="button success form-button" id="addGeneralData">Add General Data</div>
