@@ -9,7 +9,7 @@ api = Blueprint("api", __name__, url_prefix="/api")
 
 @api.route("/game", methods=["POST"])
 def create(game_id=None):
-	print(request)
+	
 	if game_id:
 		abort(403)
 
@@ -30,7 +30,7 @@ def game(game_id=None):
 		game_data = Game.objects.get_or_404(id=game_id)
 		return make_response(json.dumps(game_data), 200)
 
-		
+
 
 @api.route("/game/<string:game_id>", methods=["PUT"])
 def update(game_id=None):
