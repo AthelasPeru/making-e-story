@@ -37,6 +37,13 @@
     		</div>
     	{{/each}}
 	</script>
+	
+	<script id="failure_template" type="text/x-handlebars-template">
+		<div class="failure">
+			<span class="text">{{ failure.message }}</span>
+		</div>
+	</script>
+
 	{% endraw %}
 
 {% endblock %}
