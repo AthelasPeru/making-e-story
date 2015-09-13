@@ -41,8 +41,11 @@ def update(game_id=None):
         abort(403)
     else:
         game_data = Game.objects.get_or_404(id=game_id)
-        game_data.json_data = request.json["json_data"]
+        game_data.general_data = request.json["general_data"]
+        game_data.character_data = request.json["character_data"]
+        game_data.phases = request.json["phases"]
         game_data.save()
+        
         return make_response(json.dumps({status: "saved"}), 201)
 
 
