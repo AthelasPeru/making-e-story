@@ -4,11 +4,13 @@ import os
 class Config(object):
     SECRET_KEY = os.environ.get(
         'SECRET_KEY', "ASSDSSADASD788632ZSSCS7sasd78dad33dyas89ds7dsa")
+    UPLOAD_FOLDER = '/uploads'
+    ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 
 class DevConfig(Config):
     DEBUG = True
-    
+
     MONGODB_SETTINGS = {
         'db': 'making_e__dev'
     }
@@ -26,9 +28,6 @@ class DevConfig(Config):
         'flask_debugtoolbar.panels.route_list.RouteListDebugPanel',
         'flask_debugtoolbar.panels.profiler.ProfilerDebugPanel'
     )
-    
-
-
 
 
 class HerokuConfig(Config):
@@ -36,6 +35,7 @@ class HerokuConfig(Config):
         'host': 'mongodb://heroku_app36432742:5t3gl9m5obtg6d9ma3snidsba5@ds031632.mongolab.com:31632/heroku_app36432742'
     }
     ASSETS_DEBUG = False
+
 
 class HerokuDevConfig(HerokuConfig):
     DEBUG = True
@@ -54,11 +54,13 @@ class HerokuDevConfig(HerokuConfig):
         'flask_debugtoolbar.panels.profiler.ProfilerDebugPanel'
     )
 
+
 class ProdConfig(Config):
     MONGODB_SETTINGS = {
         'db': "making_e"
     }
     ASSETS_DEBUG = False
+
 
 class TestConfig(Config):
     MONGODB_SETTINGS = {

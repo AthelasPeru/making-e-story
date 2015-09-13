@@ -1,20 +1,6 @@
-<!doctype html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation | Welcome</title>
-    <link rel="stylesheet" href="../static/css/foundation.css" />
-    <link rel="stylesheet" href="../static/demo.css" />    
-    <script src="../static/js/vendor/modernizr.js"></script>
-  </head>
-  <body>
-    
-    <div class="row">
-      <div class="large-12 columns">
-        <h1>Making E-Story</h1>
-      </div>
-    </div>
+{% extends "base.html" %}
+
+{% block content %}
     
     <div class="row">
       <div class="large-12 columns">
@@ -27,7 +13,7 @@
     <div class="row " >
 
       <div class="large-2 medium-2 large-offset-1 medium-offset-1 columns ">
-        <a href="#" class="button create-history icon-buttom"></a>
+        <a href="{{url_for('main.create')}}" class="button create-history icon-buttom"></a>
       </div>
 
       <div class="large-3 medium-3 columns">
@@ -44,52 +30,31 @@
 
     </div>
 
+
+
     <div class="row stories-gallery" id="stories-gallery">
+
+      {% for game in games %}
       
       <div class="large-5 medium-5 large-offset-1 medium-offset-1 columns e-story " id="e-story">
-        <a href=""><img src="../static/img/image_02b.jpg" alt=""></a>
-        <h3>Titulo 1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at feugiat dui. Praesent id urna vitae neque mollis fermentum in nec nunc.</p>
+        <a href="">
+
+        <img style="height:200px, overflow:hidden;" src="{{ url_for('static', filename='uploads/{}'.format(game.img)) }}" alt=""></a>
+        <h3>{{ game.name }}</h3>
+        <p>{{game.description}}</p>
       </div>
 
-      <div class="large-5 medium-5 columns e-story end" id="e-story">
-        <a href=""><img src="../static/img/image_01a.jpg" alt=""></a>
-        <h3>Titulo 1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at feugiat dui. Praesent id urna vitae neque mollis fermentum in nec nunc.</p>
-      </div>
+      {% endfor %}
 
-      <div class="large-5 medium-5 large-offset-1 medium-offset-1 columns e-story " id="e-story">
-        <a href=""><img src="../static/img/image_01b.jpg" alt=""></a>
-        <h3>Titulo 1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at feugiat dui. Praesent id urna vitae neque mollis fermentum in nec nunc.</p>
-      </div>
-
-      <div class="large-5 medium-5  columns e-story end" id="e-story">
-        <a href=""><img src="../static/img/image_02a.jpg" alt=""></a>
-        <h3>Titulo 1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at feugiat dui. Praesent id urna vitae neque mollis fermentum in nec nunc.</p>
-      </div>
-
-      <div class="large-5 medium-5 large-offset-1 medium-offset-1 columns e-story " id="e-story">
-        <a href=""><img src="../static/img/image_02b.jpg" alt=""></a>
-        <h3>Titulo 1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at feugiat dui. Praesent id urna vitae neque mollis fermentum in nec nunc.</p>
-      </div>
-
-      <div class="large-5 medium-5 columns e-story end" id="e-story">
-        <a href=""><img src="../static/img/image_01a.jpg" alt=""></a>
-        <h3>Titulo 1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at feugiat dui. Praesent id urna vitae neque mollis fermentum in nec nunc.</p>
-      </div>
+      
 
 
 
     </div>
+
+  {% endblock %}
+
+
+  {% block title %}E-Adventure{% endblock %}
     
-    <script src="../static/js/vendor/jquery.js"></script>
-    <script src="../static/js/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-    </script>
-  </body>
-</html>
+    
