@@ -1,47 +1,80 @@
 <!-- General Info -->
-	<div class="row">
-		<h2>General Data</h2>
-	</div>
-	<div class="row">
-		<label for="name">Name</label>
-	</div>
-	<div class="row">
-		<input id="name" type="text" name="name">
-	</div>
-	<div class="row">
-		<label for="description">Description</label>
-	</div>
-	<div class="row">
-		<input type="text" id="description" name="description">
-	</div>
-	<div class="row">
-		<label for="upload_img">Upload image</label>
-	</div>
-	<div class="row">
-		<input type="file" id="upload_img" name="upload_img">
-	</div>
-	<div class="row">
-		<label for="n_scenes"># of Scenes</label>
-	</div>
-	<div class="row">
-		<input id="n_scenes" name="n_scenes" type="number" value="3">
-	</div>
-	<div class="row">
-		<label for="time_unit">Minimal time unit</label>
-	</div>
-	<div class="row">
-		<input type="number" id="time_unit" value="1000" name="time_unit">
-	</div>
-	<div class="row">
-		<label for="tags">Enter three tags</label>
-	</div>
-	<div class="row">
-		<input type="text" class="tag" id="tag-1">
-		<input type="text" class="tag" id="tag-2">
-		<input type="text" class="tag" id="tag-3">
-	</div>
-
+<div class="row">
+    <div class="small-12 columns"><h2>General Data</h2></div>
+</div>
 
 <div class="row">
-	<div class="form-button" id="addGeneralData">Add General Data</div>
+
+    <div class="small-6 columns">
+      
+        <div class="row">
+		    <div class="small-3 columns">
+		      <label for="name right-label" class="right">Name</label>
+		    </div>
+		    <div class="small-9 columns">
+		      <input type="text" id="name right-label" name="name" placeholder="Nombre de tu Historia">
+		    </div>
+      
+        </div>
+
+    	<div class="row">
+		    <div class="small-3 columns">
+		      <label for=" description right-label" class="right">Description</label>
+		    </div>
+      
+		    <div class="small-9 columns">
+		      <input type="text" id="description right-label" name="description" placeholder="texto introductorio a la historia">
+		    </div>
+      
+   		</div>
+
+		<div class="row">
+		    <div class="small-3 columns">
+		      <label for=" n_scenes right-label" class="right"># of Scenes</label>
+		    </div>
+		      
+		    <div class="small-9 columns">
+		      <input type="number" id="n_scenes right-label" name="n_scenes" value="3" >
+		    </div>
+		      
+		</div>
+
+		<div class="row">
+		    <div class="small-3 columns">
+		      <label for=" time_unit right-label" class="right">Minimal time unit</label>
+		    </div>
+		      
+		    <div class="small-9 columns">
+		      <input type="number" id="time_unit right-label" name="time_unit" value="1000" >
+		    </div>
+		      
+		</div>
+
+		<div class="row">
+		    <div class="small-3 columns ">
+		      <label for="tags">Enter three tags</label>
+		    </div>
+		      
+		    <div class="small-9 columns">
+		      <input type="text" class="tag" id="tag-1">
+		      <input type="text" class="tag" id="tag-2">
+		      <input type="text" class="tag" id="tag-3">
+		    </div>  
+		</div>
+
+	</div>
+
+	<div class="small-4 columns">
+		<div class="row">
+		    <label for="upload_img">Upload image</label>
+		  </div>
+		  <div class="row">
+		    <input type="file" id="upload_img" name="upload_img">
+		  </div>
+		  <div class="row">
+		    <a href="#" class="button success form-button" id="addGeneralData">Add General Data</a>
+		</div>
+
+	</div>
+
 </div>
