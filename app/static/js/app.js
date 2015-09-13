@@ -1,16 +1,33 @@
 $(document).ready(function(){
 
-	var submit = $("#submit").on("click", function(){
+	$("#addGeneralData").on("click", function(){
 
-		var json_data = {
-			"json_data": {
-				name: $("#name").val(),
-				description: $("#description").val(),
-				image: "default.jpg"
-			}
-			 
+		var game_data = {
+			name: $("#name").val(),
+			description: $("#description").val(),
+			image: "default.png",
+			n_scenes: $("#n_scenes").val(),
+			time_unit: $("#time_unit").val(),
+			tags: [
+				$("#tag-1").val(),
+				$("#tag-2").val(),
+				$("#tag-3").val()
+			]			 
 		};
-		// $.ajax({
+
+
+		
+	});
+
+	$("#addCharacterData").on("click", function(){
+		var character_data = {
+			age: $("#char_age").val()
+		}
+	});
+});
+
+
+// $.ajax({
 		// 	method: "POST",
 		// 	url: "/api/game",
 		// 	data: JSON.stringify(json_data),
@@ -19,5 +36,3 @@ $(document).ready(function(){
 		// 		console.log(resp);
 		// 	}
 		// });
-	});
-});
