@@ -55,7 +55,7 @@ window.Game = function(oldData){
 	var checkFailure = function(phaseNumber, nextPhaseNumber){
 		
 		//Lista de failures para esta fase
-		var thisPhaseFailures = data.phases[phaseNumber].failure;
+		var reqList = data.phases[phaseNumber].failure
 		var characterSkills = characterData.skills
 
 		//Iteramos por la lista a ver si se han cumplido

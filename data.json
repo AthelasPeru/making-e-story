@@ -45,7 +45,6 @@
         ]
       },
       "failure": 
-      [
         {
           "message": "Esen te toco por la noche, lloraras hasta el fin de tus dias.",
           "req": 
@@ -59,8 +58,7 @@
               "value": 10
             }
           ]
-        }
-      ],
+        },
       "actions": 
       [
         {
