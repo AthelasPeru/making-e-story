@@ -15,9 +15,13 @@ def create(game_id=None):
 
     else:
         new_game = Game()
+        print(request.json["general_data"])
+        
         new_game.general_data = request.json["general_data"]
         new_game.character_data = request.json["character_data"]
         new_game.phases = request.json["phases"]
+
+        
         new_game.save()
         
         return make_response(json.dumps(new_game), 201)

@@ -1,51 +1,59 @@
 <div class="row">
-	<h2>Phase</h2>
-</div>
-<div class="row">
-	<label for="phase_name">Phase Name</label>
-</div>
-<div class="row">
-	<input type="text" id="phase_name" name="phase_name">
+    <div class="small-12 columns"><h2>Phase</h2></div>
 </div>
 
 <div class="row">
-	<label for="phase_text">Phase Description</label>
+    <div class="small-2 columns">
+        <label for="phase_name right-label" class="right">Phase Name</label>
+    </div>
+    <div class="small-10 columns">
+        <input type="text" id="phase_name right-label" name="phase_name" >
+    </div>
 </div>
 <div class="row">
-	<input type="text" id="phase_text" name="phase_text" placeholder="Description of what you will acomplish during this phase if you succeed">
+    <div class="small-2 columns">
+        <label for="phase_text right-label" class="right">Phase Description</label>
+    </div>
+    <div class="small-10 columns">
+        <input type="text" id="phase_text right-label" name="phase_name"placeholder="Description of what you will acomplish during this phase if you succeed" >
+    </div>
 </div>
 
-<hr>
-
-<h3>Phase Success Conditions</h3>
-
 <div class="row">
-	<label for="succ_req">Requirement #</label>
+    <div class="small-12 medium-5 columns">
+        <div class="row">
+            <div class="small-12 columns">
+                <h3>Phase Success Conditions</h3>
+                <label for="succ_req">Requirement #</label>
+                <label for="req_name">Requirement Name</label>
+                <input type="text" id="succ_req_name" >
+                <label for="req_val">Requirement Value</label>
+                <input type="number" id="succ_req_val">
+                <label for="success_text">Success text</label>
+                <input type="text" id="success_text">
+            </div>
+        </div>  
+    </div>  
+
+    <div class="small-12 medium-5 columns">
+        <div class="row">
+            <div class="small-12 columns">
+                <h3>Phase Failure Conditions</h3>
+                <label for="fail_req">Requirement #</label>
+                <label for="fail_req_name">Failure Name</label>
+                <input type="text" id="fail_req_name" >
+                <label for="fail_req_val">Valor requerido</label>
+                <input type="number" id="fail_req_val">
+                <label for="fail_text">Failure text</label>
+                <input type="text" id="fail_text">
+            </div>
+        </div>  
+    </div> 
+
 </div>
-<div class="row">
-	<label for="req_name">Requirement Name</label>
-	<input type="text" id="succ_req_name" >
-	<label for="req_val">Requirement Value</label>
-	<input type="number" id="succ_req_val">
-	<label for="success_text">Success text</label>
-	<input type="text" id="success_text">
-</div>
-
-<hr>
-<h3>Phase Failure Conditions</h3>
-<div class="row">
-	<label for="fail_req">Requirement #</label>
-</div>
-<div class="row">
-	<label for="fail_req_name">Failure Name</label>
-	<input type="text" id="fail_req_name" >
-	<label for="fail_req_val">Valor requerido</label>
-	<input type="number" id="fail_req_val">
-	<label for="fail_text">Failure text</label>
-	<input type="text" id="fail_text">
-</div>
-
 
 <div class="row">
-	<div class="form-button" id="addPhase">Add Phase</div>
+    <div class="small-2 columns small-offset-5" >
+        <div  class="button success form-buttom" id="addPhase">Add Phase</div>
+    </div>
 </div>

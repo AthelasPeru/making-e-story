@@ -9,3 +9,48 @@
 .form-button:hover{
 	background-color: #0f4567;
 }
+
+h1, h3{
+	text-align: center;
+}
+
+h2{
+	line-height: 36px;
+}
+
+p{
+	text-align: center;
+}
+
+.icon-button{
+	display: block;
+  background-color: #fff!important;
+  background-image: url('../img/sprites_01.jpg');
+  background-repeat: no-repeat;
+
+  width: 79px;
+  height: 79px;
+}
+
+.create-history{
+  background-position: 0px 0px;
+}
+
+.create-history:hover{
+  background-position: -158px 0px;
+}
+
+.play-history{
+  background-position: -79px 0px;
+}
+.play-history:hover{
+  background-position: -237px 0px;
+}
+
+.e-story img{
+	width: 100%;
+}
+
+.selected{
+	border: 2px solid #ea3456;
+}

@@ -1,15 +1,29 @@
 $(document).ready(function(){
 
 	var game_data = {
-		phases: []
+		phases: [],
+		image: ""
 	};
+
+
+	$(".thumbnail").on("click", function(){
+		$(".thumbnail").removeClass("selected");
+		$(this).addClass("selected");
+		game_data.image = $(this).attr("src").split("/");
+		console.log(game_data.image[game_data.image.length -1])
+	});
+
+	
+
+	
 	
 	$("#addGeneralData").on("click", function(){
+
 
 		var general_data = {
 			name: $("#name").val(),
 			description: $("#description").val(),
-			image: "default.png",
+			image: game_data.image[game_data.image.length -1],
 			n_scenes: $("#n_scenes").val(),
 			time_unit: $("#time_unit").val(),
 			tags: [
@@ -18,6 +32,7 @@ $(document).ready(function(){
 				$("#tag-3").val()
 			]			 
 		};
+		
 		game_data["general_data"] = general_data;
 
 
