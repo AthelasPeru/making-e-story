@@ -1,8 +1,20 @@
 $(document).ready(function(){
 
 	var game_data = {
-		phases: []
+		phases: [],
+		image: ""
 	};
+
+	$(':file').change(function(){
+		    var file = this.files[0];
+		    var name = file.name;
+		    var size = file.size;
+		    var type = file.type;
+		    //Your validation
+		    console.log(file);
+		    game_data["image"] = file;
+		    
+		});
 	
 	$("#addGeneralData").on("click", function(){
 
@@ -18,6 +30,7 @@ $(document).ready(function(){
 				$("#tag-3").val()
 			]			 
 		};
+		
 		game_data["general_data"] = general_data;
 
 

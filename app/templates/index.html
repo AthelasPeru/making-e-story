@@ -13,7 +13,7 @@
     <div class="row " >
 
       <div class="large-2 medium-2 large-offset-1 medium-offset-1 columns ">
-        <a href="{{url_for('main.create')}}" class="button create-history icon-buttom"></a>
+        <a href="{{url_for('main.create')}}" class="create-history icon-button"></a>
       </div>
 
       <div class="large-3 medium-3 columns">
@@ -21,7 +21,7 @@
       </div>
 
       <div class="large-2 medium-2 columns ">
-        <a href="#" class="button play-history icon-buttom"></a>
+        <a href="#" class="play-history icon-button"></a>
       </div>
 
       <div class="large-3 medium-3 end columns">
@@ -33,12 +33,13 @@
 
 
     <div class="row stories-gallery" id="stories-gallery">
-
+      
+      <hr>
       {% for game in games %}
       
       <div class="large-5 medium-5 large-offset-1 medium-offset-1 columns e-story " id="e-story">
         <a class="button" href="game/{{game.id}}">
-
+          <img src="{{url_for('static', filename='img/image_01a.jpg')}}" alt="">
           ver historia
         </a>
         <h3>{{ game.general_data.name }}</h3>

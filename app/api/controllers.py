@@ -15,9 +15,21 @@ def create(game_id=None):
 
     else:
         new_game = Game()
+        print(request.json["general_data"])
+        print(request.files["upload_img"])
         new_game.general_data = request.json["general_data"]
         new_game.character_data = request.json["character_data"]
         new_game.phases = request.json["phases"]
+
+        file = request.files["upload_img"]
+        print(request.files)
+        if file and allowed_file(file.filename):
+            filename = "{}-{}".format(uuid.uuid4(), secure_filename(file.filename))
+            print(filename)
+            uploads_route = "{}/app/static/{}".format(os.getcwd(), current_app.config["UPLOAD_FOLDER"] )
+            
+            file.save(os.path.join(uploads_route, filename))
+            new_game.general_data.image = filename
         new_game.save()
         
         return make_response(json.dumps(new_game), 201)
