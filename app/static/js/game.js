@@ -31,7 +31,7 @@ window.Game = function(oldData){
 
 			// Imprimimos el HTML de la fase (principalmente el texto)
 			failureDestination.innerHTML = failureTemplate({ failure: data.phases[phaseNumber].failure });
-			
+
 		}else{
 			// Imprimimos el HTML de la fase (principalmente el texto)
 			phaseDestination.innerHTML = phaseTemplate({ phase: data.phases[phaseNumber] });
@@ -123,8 +123,17 @@ window.Game = function(oldData){
 	});
 
 }
+var gameID = window.location.href.split("/");
 
-var oldData = '{"data": {"timeSteps": 1,"gameLength": 2,"gameName": "The Red Lucky Rihno","tags": ["tag1","tag2","tag3"]},"character_data": {"skills": {"love": 0,"gaming": 0,"info": 0},"age": 1234},"phases": [{"id": 0,"name": "phase0","text": "Esta es la primera etapa de tu vida. Eres un nerdo buscando que aprender.","success": {"req": {"something": 10,"somethingElse": 20}},"failure": [{"failure_0": {"req": {"love": 5,"gaming": 10},"message": "Esen te toco por la noche, lloraras hasta el fin de tus dias."}}],"actions": [{"name": "action0","duration": 10,"messages": ["Visitaste HN","Viste TED Talks","Obama te convenció"],"reward": {"name": "info","value": 1}},{"name": "action1","duration": 10,"messages": ["Te compras un PSP","Juegas"],"reward": {"name": "gaming","value": 1}},{"name": "action2","duration": 15,"messages": ["Ver a tu novia"],"reward": {"name": "love","value": 1}}]}]}';
+var oldData = $.ajax({
+	method: "GET",
+	url: "/api/game/"+gameID[gameID.length -1],
+	contentType: "application/json",
+	complete: function(resp){
+		jsonParsed = JSON.parse(resp.responseText);
+		console.log(jsonParsed);
+	}
+});
 
-window.oldData = JSON.parse(oldData);
+window.jsonParsed = jsonParsed;
 
