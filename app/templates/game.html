@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Your Game</title>
+</head>
+<body>
+	
+
+	<div id="content">
+		<div id="phase"></div>
+		<div id="actions"></div>
+		<div id="characters"></div>
+	</div>
+
+
+	<!-- Phase Template -->
+	<script id="phase_template" type="text/x-handlebars-template">
+    	<div class="{{phase.name}}">
+    		<h2 class="text">{{phase.text}}</h2>
+    	</div>
+	</script>
+
+	<!-- Action Template -->
+	<script id="action_template" type="text/x-handlebars-template">
+    	{{#each phase.actions}}
+    		<div class="{{this.name}}">
+	    		{{#each this.messages}}
+	    			{{#if @first}}
+	    				<span class="text">{{ this }}</span>
+	    			{{/if}}
+	    		{{/each}}
+	    		<button class="do-button" data-action-number="{{@index}}" data-phase-number="{{../phase.id}}">Do</button>
+    		</div>
+    	{{/each}}
+	</script>
+
+	<script id="character_template" type="text/x-handlebars-template">
+    	{{#each characterSkills }}
+    		<div class="{{@key}}">
+	    		<span class="text">{{ @key }}</span>
+	    		<span class="value">{{ this }}</span>
+    		</div>
+    	{{/each}}
+	</script>
+
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+	<script src="../../game.js"></script>
+</body>
+</html>
+	
