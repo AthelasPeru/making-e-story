@@ -74,7 +74,7 @@
             "Viste TED Talks",
             "Obama te convenció"
           ],
-          "reward": 
+          "resource": 
           {
             "name": "info",
             "value": 1
@@ -88,7 +88,7 @@
             "Te compras un PSP",
             "Juegas"
           ],
-          "reward": 
+          "resource": 
           {
             "name": "gaming",
             "value": 1
@@ -101,7 +101,7 @@
           [
             "Ver a tu novia"
           ],
-          "reward": 
+          "resource": 
           {
             "name": "love",
             "value": 1
