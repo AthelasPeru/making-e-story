@@ -17,13 +17,29 @@ window.Game = function(oldData){
 		characterTemplate = Handlebars.compile(characterTemplateSource),
 		charactersDestination = document.getElementById("characters");
 
+	var failureTemplateSource   = $("#failure_template").html(),
+		failureTemplate = Handlebars.compile(failureTemplateSource),
+		failureDestination = document.getElementById("failure");
+
 	//Helper Function that calls showRoom with the info from the Click Handler
-	var reloadPhase = function(data, phaseNumber){
-		// Imprimimos el HTML de la fase (principalmente el texto)
-		phaseDestination.innerHTML = phaseTemplate({ phase: data.phases[phaseNumber] });
+	var reloadPhase = function(data, phaseNumber, failure){
+		if(failure){
+
+			//Clean everything
+			phaseDestination.innerHTML = '';
+			actionsDestination.innerHTML = '';
+
+			// Imprimimos el HTML de la fase (principalmente el texto)
+			failureDestination.innerHTML = failureTemplate({ failure: data.phases[phaseNumber].failure });
+			
+		}else{
+			// Imprimimos el HTML de la fase (principalmente el texto)
+			phaseDestination.innerHTML = phaseTemplate({ phase: data.phases[phaseNumber] });
+			
+			//Luego tenemos que imprimir sus acciones
+			actionsDestination.innerHTML = actionTemplate({ phase: data.phases[phaseNumber] });
+		}
 		
-		//Luego tenemos que imprimir sus acciones
-		actionsDestination.innerHTML = actionTemplate({ phase: data.phases[phaseNumber] });
 	}
 
 	var reloadCharacterData = function(resourse){
@@ -55,9 +71,23 @@ window.Game = function(oldData){
 	var checkFailure = function(phaseNumber, nextPhaseNumber){
 		
 		//Lista de failures para esta fase
-		var reqList = data.phases[phaseNumber].failure
-		var characterSkills = characterData.skills
+		var reqList = data.phases[phaseNumber].failure.req;
+		var reqLength = reqList.length;
+		var characterSkills = characterData.skills;
+		var numOfErrors = 0;
 
+		var result = reqList.map(function(obj){
+			for (var i = 0; i < characterSkills.length; i++){
+				if(characterSkills[i].key == obj.name){
+					if(characterSkills[i] >= obj.value){
+						numOfErrors++;
+					}
+				}
+			}
+		});
+		if(numOfErrors >= reqLength){
+			reloadPhase(data, phaseNumber, true);
+		}
 		//Iteramos por la lista a ver si se han cumplido
 
 		
@@ -75,7 +105,7 @@ window.Game = function(oldData){
 
 
 	//We initiate the game
-	reloadPhase(data, "0");
+	reloadPhase(data, "0", false);
 
 	// Initialize click handler for actions
 	$(document).on('click', '.do-button', function(e){
