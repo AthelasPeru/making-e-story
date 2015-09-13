@@ -1,7 +1,7 @@
 
-window.Game = function(oldData){
-	var data = oldData
+window.Game = function(data){
 	var characterData = data.character_data;
+	
 	var skillKeys = Object.keys(characterData.skills);
 	
 	// Template Precompiling
@@ -132,8 +132,9 @@ var oldData = $.ajax({
 	complete: function(resp){
 		jsonParsed = JSON.parse(resp.responseText);
 		console.log(jsonParsed);
+		window.gameData = jsonParsed;
 	}
 });
 
-window.jsonParsed = jsonParsed;
+
 

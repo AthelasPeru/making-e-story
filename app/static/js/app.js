@@ -95,7 +95,8 @@ $(document).ready(function(){
 	});
 
 	$("#complete").on("click", function(){
-		
+		uploadSkills();
+
 		console.log(game_data);
 		$.ajax({
 			method: "POST",
@@ -107,6 +108,22 @@ $(document).ready(function(){
 			}
 		});
 	});
+
+	var uploadSkills = function(){
+		var actions = game_data.phases[game_data.phases.length -1].actions;
+		var skills = actions.map(function(obj){
+			var result = {};
+			
+			var skillName = obj.resource.name;
+			var skillValue = 0;
+			
+			result[skillName] = skillValue;
+
+			return result;
+		});
+		game_data.character_data.skills = skills;
+		console.log("data Updated");
+	}
 });
 
 
