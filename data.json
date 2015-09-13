@@ -34,7 +34,8 @@
         "req": 
         {
           "something": 10,
-          "somethingElse": 20
+          "somethingElse": 20,
+          "message": "Has decidido continuar desarrollandote como individuo"
         }
       },
       "failure": 
