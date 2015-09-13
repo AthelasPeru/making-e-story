@@ -37,11 +37,12 @@
       {% for game in games %}
       
       <div class="large-5 medium-5 large-offset-1 medium-offset-1 columns e-story " id="e-story">
-        <a href="">
+        <a class="button" href="game/{{game.id}}">
 
-        <img style="height:300px; overflow:hidden;" src="{{ url_for('static', filename='uploads/{}'.format(game.img)) }}" alt=""></a>
-        <h3>{{ game.name }}</h3>
-        <p>{{game.description}}</p>
+          ver historia
+        </a>
+        <h3>{{ game.general_data.name }}</h3>
+        <p>{{game.general_data.description}}</p>
       </div>
 
       {% endfor %}
