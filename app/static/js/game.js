@@ -2,6 +2,7 @@
 window.Game = function(oldData){
 	var data = oldData
 	var characterData = data.character_data;
+	var skillKeys = Object.keys(characterData.skills);
 	
 	// Template Precompiling
 	var phaseTemplateSource   = $("#phase_template").html(),
@@ -26,18 +27,17 @@ window.Game = function(oldData){
 	}
 
 	var reloadCharacterData = function(reward){
-
-		var skills = characterData.skills;
-
-		var skillKeys = Object.keys(skills);
 		
+		//Iteramos por los nombres de los skills
 		for (i = 0; i < skillKeys.length; i++ ){
 			
+			//Cuando encontramos el skill al que queremos agregar el reward
 			if( skillKeys[i] == reward.name){
 				
+				//Actualizamos la data según el value del reward
 				characterData.skills[skillKeys[i]] = characterData.skills[skillKeys[i]] + reward.value;
 
-				// ACtualizar el template de Character Data
+				// Actualizamos el template de Character Data
 				charactersDestination.innerHTML = characterTemplate({ characterSkills : characterData.skills });
 			}
 		}
@@ -46,22 +46,26 @@ window.Game = function(oldData){
 
 
 	// Check Succsess
-	var checkSuccess = function(gameData, prevPhase, nextPhase){
+	var checkSuccess = function(phaseNumber, nextPhaseNumber){
 		//We are going to check this phase
+		
 	}
 
 	// Check Failure
-	var checkFailure = function(gameData, prevPhase, nextPhase){
-		//We are going to check this phase
+	var checkFailure = function(phaseNumber, nextPhaseNumber){
+		//We are going to check this phase failure keys
+		var thisPhaseFailures = data.phases[phaseNumber].failure;
+		console.log(thisPhaseFailures);
+		
 	}
 
 	//Simple handler for clicks that calls reload on relatedRoom
 	var doAction = function(actionNumber, phaseNumber){
 		var actionReward = data.phases[phaseNumber].actions[actionNumber].reward;
+		
 		//Se agregan sus recursos
 		reloadCharacterData(actionReward);
 	
-		//Se hace reload del juego
 		
 	}
 
@@ -73,8 +77,15 @@ window.Game = function(oldData){
 	$(document).on('click', '.do-button', function(e){
 		var actionNumber = $(e.target).data("action-number");
 		var phaseNumber = $(e.target).data("phase-number");
+		var nextPhaseNumber = phaseNumber + 1;
 
+		//We update the character info
 		doAction(actionNumber, phaseNumber);
+
+		checkFailure(phaseNumber, nextPhaseNumber);
+
+		checkSuccess(phaseNumber, nextPhaseNumber);
+
 	});
 
 }
