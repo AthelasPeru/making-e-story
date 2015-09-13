@@ -1,8 +1,12 @@
 $(document).ready(function(){
 
+	var game_data = {
+		phases: []
+	};
+	
 	$("#addGeneralData").on("click", function(){
 
-		var game_data = {
+		var general_data = {
 			name: $("#name").val(),
 			description: $("#description").val(),
 			image: "default.png",
@@ -14,6 +18,7 @@ $(document).ready(function(){
 				$("#tag-3").val()
 			]			 
 		};
+		game_data["general_data"] = general_data;
 
 
 		
@@ -23,9 +28,11 @@ $(document).ready(function(){
 		var character_data = {
 			age: $("#char_age").val()
 		}
+
+		game_data["character_data"] = character_data;
 	});
 
-	var phases = [];
+	
 
 	$("#addPhase").on("click", function(){
 		var phase = {
@@ -51,7 +58,7 @@ $(document).ready(function(){
 		}
 
 		// add phase to phases array
-		phases.push(phase);
+		game_data.phases.push(phase);
 	});
 
 
@@ -71,27 +78,22 @@ $(document).ready(function(){
 		}
 
 		// agregamos acción a la última fase
-		phases[phases.length -1].actions.push(action);
+		game_data.phases[game_data.phases.length -1].actions.push(action);
 	});
 
 	$("#complete").on("click", function(){
-		var data = {
-			general_data: general_data,
-			character_data: character_data,
-			phases: phases
-
-		}
-		console.log(data);
+		
+		console.log(game_data);
+		$.ajax({
+			method: "POST",
+			url: "/api/game",
+			data: JSON.stringify(game_data),
+			contentType: "application/json",
+			complete: function(resp){
+				console.log(resp);
+			}
+		});
 	});
 });
 
 
-// $.ajax({
-		// 	method: "POST",
-		// 	url: "/api/game",
-		// 	data: JSON.stringify(json_data),
-		// 	contentType: "application/json",
-		// 	complete: function(resp){
-		// 		console.log(resp);
-		// 	}
-		// });

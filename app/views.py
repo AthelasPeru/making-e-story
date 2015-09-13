@@ -27,8 +27,9 @@ def create():
 def create_item():
     
     new_game= Game()
-    new_game.name = request.form["name"]
-    new_game.description = request.form["description"]
+    new_game.general_data = request.json["general_data"]
+    new_game.character_data = request.json["character_data"]
+    new_game.phases = request.json["phases"]
 
     file = request.files["upload_img"]
     if file and allowed_file(file.filename):
@@ -37,7 +38,6 @@ def create_item():
         uploads_route = "{}/app/static/{}".format(os.getcwd(), current_app.config["UPLOAD_FOLDER"] )
         
         file.save(os.path.join(uploads_route, filename))
-
         new_game.img = filename
 
 
