@@ -4,6 +4,8 @@
     "timeSteps": 1,
     "gameLength": 2,
     "gameName": "The Red Lucky Rihno",
+    "gameDescription": "The story of our little friend the red lucky rihno"
+    "image": "name.jpg",
     "tags": 
     [
         "tag1",

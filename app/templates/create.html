@@ -5,18 +5,7 @@
 
 	{% if status != "done" %}
 	<div class="row">
-		<form action="/create" method="post" enctype="multipart/form-data">
-			<div class="row">
-				<label for="name"></label>
-			</div>
-			<div class="row"><input id="name" type="text" name="name"></div>
-			<div class="row"><label for="description">description</label></div>
-			<div class="row"><input type="text" id="description" name="description"></div>
-			<div class="row"><label for="upload_img">upload image</label></div>
-			<div class="row"><input type="file" id="upload_img" name="upload_img"></div>
-			<div class="row"><button id="submit">Submit</button></div>
-
-		</form>
+		{% include "form.html" %}
 		
 		
 	</div>

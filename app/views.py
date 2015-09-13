@@ -44,3 +44,15 @@ def create_item():
     new_game.save()
     return redirect(url_for("main.index"))
 
+
+@main.route("/game/<string:game_id>")
+def play_game(game_id):
+
+    game = Game.objects.get_or_404(id=game_id)
+
+
+    return render_template(
+        "game.html",
+        game=game
+    )
+
