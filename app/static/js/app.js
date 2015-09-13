@@ -73,7 +73,7 @@ $(document).ready(function(){
 			],
 			resource:{
 				name: $("#resource_name").val(),
-				value: $("#resource_value")
+				value: $("#resource_value").val()
 			}
 		}
 

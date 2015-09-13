@@ -1,9 +1,14 @@
 
 window.Game = function(data){
+	
 	var characterData = data.character_data;
-	
-	var skillKeys = Object.keys(characterData.skills);
-	
+	console.log(characterData);
+
+	var phaseNumber = 0;
+
+	var skillKeys = Object.keys(characterData.skills[0]);
+	console.log(skillKeys);
+
 	// Template Precompiling
 	var phaseTemplateSource   = $("#phase_template").html(),
 		phaseTemplate = Handlebars.compile(phaseTemplateSource),
@@ -22,7 +27,7 @@ window.Game = function(data){
 		failureDestination = document.getElementById("failure");
 
 	//Helper Function that calls showRoom with the info from the Click Handler
-	var reloadPhase = function(data, phaseNumber, failure){
+	var reloadPhase = function(data, failure){
 		if(failure){
 
 			//Clean everything
@@ -39,22 +44,23 @@ window.Game = function(data){
 			//Luego tenemos que imprimir sus acciones
 			actionsDestination.innerHTML = actionTemplate({ phase: data.phases[phaseNumber] });
 		}
-		
 	}
 
-	var reloadCharacterData = function(resourse){
-		
+	var reloadCharacterData = function(resource){
+		console.log("Resource: " + resource);
+		console.log("reloadCharacterData Phase Number" + phaseNumber);
 		//Iteramos por los nombres de los skills
 		for (var i = 0; i < skillKeys.length; i++ ){
 			
-			//Cuando encontramos el skill al que queremos agregar el resourse
-			if( skillKeys[i] == resourse.name){
-				
-				//Actualizamos la data según el value del resourse
-				characterData.skills[skillKeys[i]] = characterData.skills[skillKeys[i]] + resourse.value;
-
+			//Cuando encontramos el skill al que queremos agregar el resource
+			if( skillKeys[i] == resource.name){
+				console.log("the skill you want to change :" + skillKeys[i]);
+				//Actualizamos la data según el value del resource
+				console.log("the past skill:" + characterData.skills[0][skillKeys[i]]);
+				characterData.skills[0][skillKeys[i]] = characterData.skills[0][skillKeys[i]] + resource.value;
+				console.log("the actual skill:" + characterData.skills[0][skillKeys[i]]);
 				// Actualizamos el template de Character Data
-				charactersDestination.innerHTML = characterTemplate({ characterSkills : characterData.skills });
+				charactersDestination.innerHTML = characterTemplate({ characterSkills : characterData.skills[0] });
 			}
 		}
 	}
@@ -62,63 +68,55 @@ window.Game = function(data){
 
 
 	// Check Succsess
-	var checkSuccess = function(phaseNumber, nextPhaseNumber){
+	var checkSuccess = function(nextPhaseNumber){
 		//We are going to check this phase
 		
 	}
 
 	// Check Failure
-	var checkFailure = function(phaseNumber, nextPhaseNumber){
-		
+	var checkFailure = function(nextPhaseNumber){
+		console.log("CheckFailure PhaseNumber: " + phaseNumber);
 		//Lista de failures para esta fase
-		var reqList = data.phases[phaseNumber].failure.req;
-		var reqLength = reqList.length;
+		var reqList = data.phases[phaseNumber].failure[0];
 		var characterSkills = characterData.skills;
 		var numOfErrors = 0;
 
-		var result = reqList.map(function(obj){
-			for (var i = 0; i < characterSkills.length; i++){
-				if(characterSkills[i].key == obj.name){
-					if(characterSkills[i] >= obj.value){
-						numOfErrors++;
-					}
+		for (var i = 0; i < characterSkills.length; i++){
+			if(characterSkills[i].key == reqList.name){
+				if(characterSkills[i] >= reqList.value){
+					reloadPhase(data, true);
 				}
 			}
-		});
-		if(numOfErrors >= reqLength){
-			reloadPhase(data, phaseNumber, true);
 		}
-		//Iteramos por la lista a ver si se han cumplido
-
 		
 	}
 
 	//Simple handler for clicks that calls reload on relatedRoom
-	var doAction = function(actionNumber, phaseNumber){
-		var actionResourse = data.phases[phaseNumber].actions[actionNumber].resourse;
+	var doAction = function(actionNumber){
+		var actionResource = data.phases[phaseNumber].actions[actionNumber].resource;
 		
 		//Se agregan sus recursos
-		reloadCharacterData(actionResourse);
+		reloadCharacterData(actionResource);
 	
 		
 	}
 
 
 	//We initiate the game
-	reloadPhase(data, "0", false);
+	reloadPhase(data, false);
 
 	// Initialize click handler for actions
 	$(document).on('click', '.do-button', function(e){
 		var actionNumber = $(e.target).data("action-number");
-		var phaseNumber = $(e.target).data("phase-number");
+		console.log("OnClick PhaseNumber : " + phaseNumber);
 		var nextPhaseNumber = phaseNumber + 1;
 
 		//We update the character info
-		doAction(actionNumber, phaseNumber);
+		doAction(actionNumber);
 
-		checkFailure(phaseNumber, nextPhaseNumber);
+		checkFailure(nextPhaseNumber);
 
-		checkSuccess(phaseNumber, nextPhaseNumber);
+		checkSuccess(nextPhaseNumber);
 
 	});
 

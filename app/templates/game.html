@@ -11,7 +11,7 @@
 	<!-- Phase Template -->
 	<script id="phase_template" type="text/x-handlebars-template">
     	<div class="{{phase.name}}">
-    		<h2 class="text">{{phase.text}}</h2>
+    		<h2 class="text">{{phase.description}}</h2>
     	</div>
 	</script>
 
@@ -24,7 +24,7 @@
 	    				<span class="text">{{ this }}</span>
 	    			{{/if}}
 	    		{{/each}}
-	    		<button class="do-button" data-action-number="{{@index}}" data-phase-number="{{../phase.id}}">Do</button>
+	    		<button class="do-button" data-action-number="{{@index}}" data-phase-number="{{../phase.name}}">Do</button>
     		</div>
     	{{/each}}
 	</script>
