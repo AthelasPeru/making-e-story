@@ -1,0 +1,10 @@
+.form-button{
+	cursor: pointer;
+	display: inline-block;
+	background-color: #ef1234;
+	padding: 10px;
+}
+
+.form-button:hover{
+	background-color: #0f4567;
+}
