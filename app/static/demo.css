@@ -1,0 +1,35 @@
+h1{
+	text-align: center;
+}
+
+h2{
+	line-height: 36px;
+}
+
+p{
+	text-align: center;
+}
+
+.icon-buttom{
+  background-color: #fff!important;
+  background-image: url('img/sprites_01.jpg');
+  background-repeat: no-repeat;
+
+  width: 79px;
+  height: 79px;
+}
+
+.create-history{
+  background-position: 0px 0px;
+}
+
+.create-history:hover{
+  background-position: -158px 0px;
+}
+
+.play-history{
+  background-position: -79px 0px;
+}
+.play-history:hover{
+  background-position: -237px 0px;
+}
