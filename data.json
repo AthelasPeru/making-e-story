@@ -31,25 +31,36 @@
       "text": "Esta es la primera etapa de tu vida. Eres un nerdo buscando que aprender.",
       "success": 
       {
+        "message": "Has decidido continuar desarrollandote como individuo",
         "req": 
-        {
-          "something": 10,
-          "somethingElse": 20,
-          "message": "Has decidido continuar desarrollandote como individuo"
-        }
+        [
+          {
+            "name": "something",
+            "value": 10
+          },
+          {
+            "name": "something",
+            "value": 10
+          }
+        ]
       },
       "failure": 
       [
         {
-          "failure_0": 
-          {
-            "req": 
+          "id": 0,
+          "name": "failure0",
+          "message": "Esen te toco por la noche, lloraras hasta el fin de tus dias.",
+          "req": 
+          [
             {
-              "love": 5,
-              "gaming": 10
+            "name": "love",
+            "value": 5
             },
-            "message": "Esen te toco por la noche, lloraras hasta el fin de tus dias."
-          }
+            {
+              "name": "gaming",
+              "value": 10
+            }
+          ]
         }
       ],
       "actions": 

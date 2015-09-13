@@ -29,7 +29,7 @@ window.Game = function(oldData){
 	var reloadCharacterData = function(reward){
 		
 		//Iteramos por los nombres de los skills
-		for (i = 0; i < skillKeys.length; i++ ){
+		for (var i = 0; i < skillKeys.length; i++ ){
 			
 			//Cuando encontramos el skill al que queremos agregar el reward
 			if( skillKeys[i] == reward.name){
@@ -53,9 +53,19 @@ window.Game = function(oldData){
 
 	// Check Failure
 	var checkFailure = function(phaseNumber, nextPhaseNumber){
-		//We are going to check this phase failure keys
+		
+		//Lista de failures para esta fase
 		var thisPhaseFailures = data.phases[phaseNumber].failure;
-		console.log(thisPhaseFailures);
+		
+		//Iteramos por la lista a ver si se han cumplido
+		for (var i=0; i < thisPhaseFailures.length; i++){
+			
+			var req = thisPhaseFailures[i].req;
+			
+			for(var j = 0; j < req.length; j++ ){
+				if (req[j].)
+			}
+		}
 		
 	}
 
