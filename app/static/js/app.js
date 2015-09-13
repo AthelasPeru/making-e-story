@@ -32,11 +32,20 @@ $(document).ready(function(){
 			name: $("#phase_name").val(),
 			description: $("#phase_text").val(),
 			success: {
-				req:{
-					$("#req#key").val(): $("#req#val").val(),
-				}, 
+				message: $("#success_text").val(),
+				req:[
+					{
+					name: $("#succ_req_name").val(),
+					value : $("#succ_req_val").val()
+				}], 
 			},
-			failure:{},
+			failure:[
+				{
+					name: $("#fail_req_name").val(),
+					value : $("#fail_req_val").val(),
+					message: $("#fail_text").val()
+				}
+			],
 			actions: []
 
 		}
@@ -63,6 +72,16 @@ $(document).ready(function(){
 
 		// agregamos acción a la última fase
 		phases[phases.length -1].actions.push(action);
+	});
+
+	$("#complete").on("click", function(){
+		var data = {
+			general_data: general_data,
+			character_data: character_data,
+			phases: phases
+
+		}
+		console.log(data);
 	});
 });
 
