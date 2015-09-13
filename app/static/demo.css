@@ -1,4 +1,4 @@
-h1{
+h1, h3{
 	text-align: center;
 }
 
@@ -32,4 +32,8 @@ p{
 }
 .play-history:hover{
   background-position: -237px 0px;
+}
+
+.e-story img{
+	width: 100%;
 }
