@@ -26,16 +26,16 @@ window.Game = function(oldData){
 		actionsDestination.innerHTML = actionTemplate({ phase: data.phases[phaseNumber] });
 	}
 
-	var reloadCharacterData = function(reward){
+	var reloadCharacterData = function(resourse){
 		
 		//Iteramos por los nombres de los skills
 		for (var i = 0; i < skillKeys.length; i++ ){
 			
-			//Cuando encontramos el skill al que queremos agregar el reward
-			if( skillKeys[i] == reward.name){
+			//Cuando encontramos el skill al que queremos agregar el resourse
+			if( skillKeys[i] == resourse.name){
 				
-				//Actualizamos la data según el value del reward
-				characterData.skills[skillKeys[i]] = characterData.skills[skillKeys[i]] + reward.value;
+				//Actualizamos la data según el value del resourse
+				characterData.skills[skillKeys[i]] = characterData.skills[skillKeys[i]] + resourse.value;
 
 				// Actualizamos el template de Character Data
 				charactersDestination.innerHTML = characterTemplate({ characterSkills : characterData.skills });
@@ -56,25 +56,19 @@ window.Game = function(oldData){
 		
 		//Lista de failures para esta fase
 		var thisPhaseFailures = data.phases[phaseNumber].failure;
-		
+		var characterSkills = characterData.skills
+
 		//Iteramos por la lista a ver si se han cumplido
-		for (var i=0; i < thisPhaseFailures.length; i++){
-			
-			var req = thisPhaseFailures[i].req;
-			
-			for(var j = 0; j < req.length; j++ ){
-				if (req[j].)
-			}
-		}
+
 		
 	}
 
 	//Simple handler for clicks that calls reload on relatedRoom
 	var doAction = function(actionNumber, phaseNumber){
-		var actionReward = data.phases[phaseNumber].actions[actionNumber].reward;
+		var actionResourse = data.phases[phaseNumber].actions[actionNumber].resourse;
 		
 		//Se agregan sus recursos
-		reloadCharacterData(actionReward);
+		reloadCharacterData(actionResourse);
 	
 		
 	}
