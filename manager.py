@@ -11,9 +11,9 @@ from flask.ext.script import Manager
 from app import create_app
 
 
-conf_env = os.environ.get('WEBAPP_ENV', "dev")
 
-app = create_app(conf_env)
+
+app = create_app(config_val="default")
 
 manager = Manager(app)
 

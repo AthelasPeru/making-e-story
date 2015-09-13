@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+	{% if status != "done" %}
+	<form action="/create" method="post" enctype="multipart/form-data">
+		<div class="row">
+			<label for="name"></label>
+		</div>
+		<div class="row">
+			<input id="name" type="text" name="name">
+		</div>
+		<div class="row"><label for="description">description</label></div>
+		<div class="row"><input type="text" id="description" name="description"></div>
+		<div class="row"><label for="upload_img">upload image</label></div>
+		<div class="row"><input type="file" id="upload_img" name="upload_img"></div>
+		<div class="row"><input type="submit" value="submit"></div>
+
+		
+		
+
+	</form>
+	{% else %}
+
+	<div class="row">
+		<h3>Historia creada</h3>
+	</div>
+	{% endif %}
+{% endblock %}

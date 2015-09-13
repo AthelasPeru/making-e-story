@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+    <div class="row">
+      <div class="large-12 columns">
+      	<div class="panel">
+	        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at feugiat dui. Praesent id urna vitae neque mollis fermentum in nec nunc. Sed lacinia blandit nisl ac sollicitudin. Curabitur et neque sodales, efficitur ex facilisis, cursus sem. Donec sapien lectus, ultrices sit amet laoreet at, luctus vulputate diam. In in elementum magna, sed malesuada leo. Proin ex</p>
+	       
+	    	</div>
+    </div>
+
+    <div class="row " >
+
+      <div class="large-2 medium-2 large-offset-1 medium-offset-1 columns ">
+        <a href="{{url_for('main.create')}}" class="button create-history icon-buttom"></a>
+      </div>
+
+      <div class="large-3 medium-3 columns">
+        <h2>crea una</br>historia</h2>
+      </div>
+
+      <div class="large-2 medium-2 columns ">
+        <a href="#" class="button play-history icon-buttom"></a>
+      </div>
+
+      <div class="large-3 medium-3 end columns">
+        <h2>vive una</br>historia</h2>
+      </div>
+
+    </div>
+
+
+
+    <div class="row stories-gallery" id="stories-gallery">
+
+      {% for game in games %}
+      
+      <div class="large-5 medium-5 large-offset-1 medium-offset-1 columns e-story " id="e-story">
+        <a href="">
+
+        <img style="height:200px, overflow:hidden;" src="{{ url_for('static', filename='uploads/{}'.format(game.img)) }}" alt=""></a>
+        <h3>{{ game.name }}</h3>
+        <p>{{game.description}}</p>
+      </div>
+
+      {% endfor %}
+
+      
+
+
+
+    </div>
+
+  {% endblock %}
+
+
+  {% block title %}E-Adventure{% endblock %}
+    
+    

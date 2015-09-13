@@ -1,39 +1,46 @@
 # coding: utf-8
 
 
-# Flask libraries
-from flask_restful import Resource, fields, marshal_with
-from flask import abort, make_response, json, current_app
+from flask import Blueprint, abort, request, make_response, json
 
-# local imports
 from app.models import Game
 
-# Game fields for API Marshall
+api = Blueprint("api", __name__, url_prefix="/api")
 
-game_fields = {
-	"id": fields.String(),
-	"json_data": fields.Nested()
-}
+@api.route("/game", methods=["POST"])
+def create(game_id=None):
+	
+	if game_id:
+		abort(403)
 
-class GameApi(Resource):
-	"""
-	Handle basic game saving and loading
-	"""
-	@marshal_with(game_fields)
-	def get(self, game_id=None):
-		if game_id:
-			game = Game.objects.get_or_404(id=game_id)
+	else:
+		new_game = Game()
+		new_game.json_data = request.json["json_data"]
+		new_game.save()
+		return make_response(json.dumps(new_game), 201)
 
-			return game
-		else:
-			abort(401)
 
-	@marshal_with(game_fields)
-	def post(self, game_id=None):
-		if game_id:
-			abort(405)
-		else:
+@api.route("/game", methods=["GET"])
+@api.route("/game/<string:game_id>", methods=["GET"])
+def game(game_id=None):
+	if not game_id:
+		games = Game.objects.to_json()
+		return make_response(games, 200)
+	else:
+		game_data = Game.objects.get_or_404(id=game_id)
+		return make_response(json.dumps(game_data), 200)
 
-			args = game_post_parser.parse_args()
-			new_game = Game()
-			new_game.json_data = args["data"]
+
+
+@api.route("/game/<string:game_id>", methods=["PUT"])
+def update(game_id=None):
+	if not game_id:
+		abort(403)
+	else:
+		game_data = Game.objects.get_or_404(id=game_id)
+		game_data.json_data = request.json["json_data"]
+		game_data.save()
+		return make_response(json.dumps({status: "saved"}), 201)
+
+
+
